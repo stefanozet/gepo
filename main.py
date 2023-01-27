@@ -3,8 +3,8 @@ import pandas as pd
 import numpy as np
 from io import StringIO
 from st_on_hover_tabs import on_hover_tabs
-from pgs.pg_edit import edit
-from pgs.pg_upload import upload
+from pgs.edit import edit
+from pgs.upload import upload
 
 #------------------------------------------------------------------------------#
 # Parametri di configurazione                                                  #
