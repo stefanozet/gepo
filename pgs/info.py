@@ -26,7 +26,7 @@ def info(df: pd.DataFrame):
               st.session_state["page_number_df"] -= 1
         ti_start_idx = st.session_state["page_number_df"] * N_df
         ti_end_idx = (1 + st.session_state["page_number_df"]) * N_df
-        if (ti_start_idx > last_page) | (ti_end_idx < 0):
+        if (ti_start_idx > last_page) | (ti_end_idx < 0) | (ti_end_idx > last_page):
             ti_start_idx , ti_end_idx = 0,N_df
             st.session_state["page_number_df"] = 0
         if first.button("First",type="primary",key='first'):
