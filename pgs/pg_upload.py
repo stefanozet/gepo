@@ -24,7 +24,9 @@ def upload(file_ext, input_separator, rows_to_display):
             )
 
     with col2:
-        if uploaded_file and uploaded_file.type == 'text/csv':
+        if uploaded_file and (
+            uploaded_file.type == 'text/csv' \
+            or uploaded_file.type == 'text/plain'):
             separator = st.selectbox(
                 'Which is the separator?',
                 input_separator
@@ -39,7 +41,8 @@ def upload(file_ext, input_separator, rows_to_display):
         ''
 
     if uploaded_file:
-        if uploaded_file.type == 'text/csv':
+        if uploaded_file.type == 'text/csv'	\
+            or uploaded_file.type == 'text/plain':
             dataframe = pd.read_csv(uploaded_file, sep=separator)
         else:
             dataframe = pd.read_excel(uploaded_file)
