@@ -1,10 +1,7 @@
 import pandas as pd
 import streamlit as st
 
-# file_ext = ['csv','xls']
-# cf_input_separator = ';', '|', ','
-
-def upload(file_ext, input_separator, rows_to_display):
+def upload(file_ext = ['csv', 'xls', 'txt'], input_separator = [';', '|', ','], rows_to_display = 10):
     
     ext = 'xls'
 
