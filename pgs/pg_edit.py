@@ -1,5 +1,6 @@
 import pandas as pd
 import streamlit as st
+from pgs.info import info
 
 # st.set_page_config(
 #     layout="wide",
@@ -15,12 +16,13 @@ def edit(): # pd.DataFrame:
         tab1, tab2, tab3 = st.tabs(["Info", "Drop", "Elaborate"])
     
         with tab1:
-            ''
+
+            info(st.session_state.df) #st.dataframe(st.session_state.df)
         with tab2:
             ''
         with tab3:
             ''
-        st.dataframe(st.session_state.df)
+        
 
     else:
         st.write("What do you do?")
