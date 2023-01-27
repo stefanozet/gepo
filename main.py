@@ -19,7 +19,7 @@ rows_to_display = 10
 st.set_page_config(layout="wide")
 st.markdown('<style>' + open('./static/style.css').read() + '</style>', unsafe_allow_html=True)
 
-st.title("CSV Toools")
+st.title("CSV Tools")
 
 with st.sidebar:
     tabs = on_hover_tabs(
