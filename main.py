@@ -3,9 +3,11 @@ import pandas as pd
 import numpy as np
 from io import StringIO
 from st_on_hover_tabs import on_hover_tabs
-from pages.pg_upload import upload
-from pages.pg_edit import edit
+from pgs.pg_edit import edit
+from pgs.pg_upload import upload
 
+st.set_page_config(layout="wide")
+st.markdown('<style>' + open('./static/style.css').read() + '</style>', unsafe_allow_html=True)
 #------------------------------------------------------------------------------#
 # Parametri di configurazione                                                  #
 #------------------------------------------------------------------------------#
@@ -17,10 +19,6 @@ rows_to_display = 10
 # Inizializzazione e funzioni                                                  #
 #------------------------------------------------------------------------------#
 uploaded_file = None
-
-st.set_page_config(layout="wide")
-st.markdown('<style>' + open('./static/style.css').read() + '</style>', unsafe_allow_html=True)
-
 
 #------------------------------------------------------------------------------#
 # Pagina principale                                                            #

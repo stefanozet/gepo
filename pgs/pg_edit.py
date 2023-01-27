@@ -25,5 +25,3 @@ def edit(): # pd.DataFrame:
     else:
         st.write("What do you do?")
         st.write("Please, before all, load something in upload page.")
-
-edit()
