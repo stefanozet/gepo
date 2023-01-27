@@ -10,7 +10,7 @@ from pgs.pg_upload import upload
 # Parametri di configurazione                                                  #
 #------------------------------------------------------------------------------#
 input_separator = ';', '|', ','
-file_ext = ['csv','xls']
+file_ext = ['csv','xls', 'txt']
 rows_to_display = 10
 
 #------------------------------------------------------------------------------#
