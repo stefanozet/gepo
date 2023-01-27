@@ -16,54 +16,56 @@ rows_to_display = 10
 #------------------------------------------------------------------------------#
 # Inizializzazione e funzioni                                                  #
 #------------------------------------------------------------------------------#
+uploaded_file = None
 
-# st.set_page_config(layout="wide")
-# st.markdown('<style>' + open('./static/style.css').read() + '</style>', unsafe_allow_html=True)
+st.set_page_config(layout="wide")
+st.markdown('<style>' + open('./static/style.css').read() + '</style>', unsafe_allow_html=True)
 
-st.set_page_config(
-    layout="wide",
-    page_title="CSV Toools",
-    page_icon="main"
-)
 
+#------------------------------------------------------------------------------#
+# Pagina principale                                                            #
+#------------------------------------------------------------------------------#
 st.title("CSV Toools")
 
-
-uploaded_file = st.file_uploader(
-    "Choose a file", 
-    type = file_ext, 
-    accept_multiple_files=False, 
-    help = "Load an file csv, xls or drang & drop it on the form."
+with st.sidebar:
+    tabs = on_hover_tabs(
+        tabName=['Upload', 'Edit', 'Export'], 
+        iconName=['upload', 'edit', 'download'], 
+        default_choice=0
     )
+    st.session_state.tabs = tabs
 
-col1, col2, col3, col4 = st.columns(4)
+if tabs =='Upload':
+    st.header('{}'.format(tabs))
+    upload(file_ext, input_separator, rows_to_display)
+    # if st.button("Go to edit!"): 
+    #     tabs = 'Edit'
+    #     st.write('ciao ciao')
 
-with col1:
-    cf_rows_to_display = st.number_input(
-        'Insert a number of rows to display', 
-        min_value=1, max_value=100, value=rows_to_display, step=10, format='%i'
-        )
+elif tabs == 'Edit':
+    st.header('{}'.format(tabs))
+    edit()
 
-with col2:
-    if uploaded_file and uploaded_file.type == 'text/csv':
-        separator = st.selectbox(
-            'Which is the separator?',
-            input_separator
-            )
-
-with col3:
-    if uploaded_file:
-        st.write("<div class='block_widget'>File type: {}</div>".format(uploaded_file.type), unsafe_allow_html=True)
-
-with col4:
-    # st.button("Go to elaboration section", )
-    ''
-
-if uploaded_file:
-    if uploaded_file.type == 'text/csv':
-        dataframe = pd.read_csv(uploaded_file, sep=separator)
+elif tabs == 'Export':
+    st.header('{}'.format(tabs))
+    if 'df' in st.session_state:
+        st.dataframe(st.session_state.df)
     else:
-        dataframe = pd.read_excel(uploaded_file)
+        st.write("What do you do?")
+        st.write("Please, before all, load something in upload page.")
 
-    st.dataframe(dataframe.head(cf_rows_to_display))
-    st.session_state.df = dataframe
+
+        # st.download_button(
+        #     label="Download data as CSV",
+        #     data=convert_df_to_csv(dataframe),
+        #     file_name=file_output_name+'.csv',
+        #     mime='text/csv',
+        # )
+
+
+            # file_output_name = st.text_input(
+                # 'Which name for output file?',
+                # value=file_output_name
+                # )
+
+    # st.image("https://static.streamlit.io/examples/owl.jpg", width=200)
