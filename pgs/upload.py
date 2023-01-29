@@ -3,8 +3,6 @@ import streamlit as st
 
 def upload(file_ext = ['csv', 'xls', 'txt'], input_separator = [';', '|', ','], rows_to_display = 10):
     
-    ext = 'xls'
-
     uploaded_file = st.file_uploader(
         "Choose a file", 
         type = file_ext, 
