@@ -3,6 +3,7 @@ import pandas as pd
 import numpy as np
 from io import StringIO
 from st_on_hover_tabs import on_hover_tabs
+from pgs.download import download
 from pgs.edit import edit
 from pgs.upload import upload
 
@@ -45,8 +46,5 @@ elif tabs == 'Edit':
 #Pagina Export
 elif tabs == 'Export':
     st.header('{}'.format(tabs))
-    if 'df' in st.session_state:
-        st.dataframe(st.session_state.df)
-    else:
-        st.write("What do you do?")
-        st.write("Please, before all, load something in upload page.")
+    download()
+
