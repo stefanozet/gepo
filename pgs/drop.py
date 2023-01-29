@@ -6,6 +6,7 @@ def drop():
 	if 'df' in st.session_state:
 		df = st.session_state.df
 
+		df_col = []
 		if st.button("Save and drop columns not selected."):
 			st.balloons()
 			st.session_state.df = df[df_col]
