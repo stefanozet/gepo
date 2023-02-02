@@ -3,7 +3,7 @@ import pandas as pd
 
 
 
-def info(df: pd.DataFrame):
+def info():
 
     if 'df' in st.session_state:
         df = st.session_state.df
@@ -39,4 +39,5 @@ def info(df: pd.DataFrame):
             ti_end_idx = last_page  
         sub_df = df.iloc[ti_start_idx:ti_end_idx]
         st.dataframe(sub_df[df_col])
+        st.dataframe(df[df_col])
         st.write("Page",st.session_state["page_number_df"]+1, "of",max(last_page//N_df, st.session_state['page_number_df']))
